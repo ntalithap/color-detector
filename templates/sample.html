@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body background="{{ url_for('static', filename='images/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk2MC1uaW5nLTMwLmpwZw.jpg')}}">
+  <nav class="navbar navbar-dark navbar-expand-md shadow" style="background: #b0e2e6;">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="navcol-1">
+        <a class="navbar-brand mx-2" href="/">
+          <img src="/images/126572_home_house_icon.png" alt="" width="30" height="24">
+        </a>
+        <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link fw-bold mx-2" style="color: black;font-family: 'Happy';font-size: 25px;" href="/detect">Color Detection</a></li>
+          <li class="nav-item"><a class="nav-link fw-bold mx-3" style="color: black;font-family: 'Happy';font-size: 25px;" href="/picker">Color Picker</a></li>
+          <li class="nav-item"><a class="nav-link fw-bold mx-2" style="color: black;font-family: 'Happy';font-size: 25px;" href="/sample">Sample</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+        
+  <div class="container my-5">
+    <title>Sample - Color Palette</title>
+    <h1 style="text-align:center;color: salmon;font-family: 'Best';font-size: 48px;">SAMPLE</h1>
+    <div class="sample-cards-cont" style="padding-top:3rem;">
+      <div class="card-wrapper">
+        <div class="sample-card">
+          <div class="card-front card-front-1 hint-card"></div>
+          <div class="card-back">
+            {% for color in color_data[0]["hex_colors"]: %}
+            <div class="color-item" style="text-align: center; padding: 20px 0; background-color: {{ color}}">
+              {{ color }}
+              <span class="rgb_color" style="display: block">{{ color_data[0]["rgb_colors"][loop.index - 1]}}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="card-wrapper">
+        <div class="sample-card">
+          <div class="card-front card-front-2"></div>
+          <div class="card-back">
+            {% for color in color_data[1]["hex_colors"]: %}
+            <div class="color-item" style="text-align: center; padding: 20px 0; background-color: {{ color }}">
+              {{ color }}
+              <span class="rgb_color" style="display: block">{{ color_data[1]["rgb_colors"][loop.index - 1]}}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="card-wrapper">
+        <div class="sample-card">
+          <div class="card-front card-front-3"></div>
+          <div class="card-back">
+            {% for color in color_data[2]["hex_colors"]: %}
+            <div class="color-item" style="text-align: center; padding: 20px 0; background-color: {{ color }}">
+              {{ color }}
+              <span class="rgb_color" style="display: block">{{ color_data[2]["rgb_colors"][loop.index - 1]}}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="card-wrapper" style="padding-top:25px;">
+        <div class="sample-card">
+          <div class="card-front card-front-4"></div>
+          <div class="card-back">
+            {% for color in color_data[3]["hex_colors"]: %}
+            <div class="color-item" style="text-align: center; padding: 20px 0; background-color: {{ color }}">
+              {{ color }}
+              <span class="rgb_color" style="display: block">{{ color_data[3]["rgb_colors"][loop.index - 1]}}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="card-wrapper" style="padding-top:25px;">
+        <div class="sample-card">
+          <div class="card-front card-front-5"></div>
+          <div class="card-back">
+            {% for color in color_data[4]["hex_colors"]: %}
+            <div class="color-item" style="text-align: center; padding: 20px 0; background-color: {{ color }}">
+              {{ color }}
+              <span class="rgb_color" style="display: block">{{ color_data[4]["rgb_colors"][loop.index - 1]}}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="card-wrapper" style="padding-top:25px;">
+        <div class="sample-card">
+          <div class="card-front card-front-6"></div>
+          <div class="card-back">
+            {% for color in color_data[5]["hex_colors"]: %}
+            <div class="color-item" style="text-align: center; padding: 20px 0; background-color: {{ color }}">
+              {{ color }}
+              <span class="rgb_color" style="display: block">{{ color_data[5]["rgb_colors"][loop.index - 1]}}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

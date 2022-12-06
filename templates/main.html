@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body background="{{ url_for('static', filename='images/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk2MC1uaW5nLTMwLmpwZw.jpg')}}">
+    <nav class="navbar navbar-dark navbar-expand-md shadow" style="background: #b0e2e6;">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <a class="navbar-brand mx-2" href="/">
+                    <img src="/images/126572_home_house_icon.png" alt="" width="30" height="24">
+                </a>
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link fw-bold mx-2" style="color: black;font-family: 'Happy';font-size: 25px;" href="/detect">Color Detection</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold mx-3" style="color: black;font-family: 'Happy';font-size: 25px;" href="/picker">Color Picker</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold mx-2" style="color: black;font-family: 'Happy';font-size: 25px;" href="/sample">Sample</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <title>Color Detection - Color Palette</title>
+        <form action='/detect' method='POST' enctype='multipart/form-data' id = "myform">
+            <h1 style="text-align: center;color: salmon;font-family: 'Best';font-size: 48px;">COLOR DETECTION</h1>
+            <p style="font-family:'Reach';padding-top: 3rem;text-align: left;font-size: x-large;margin-bottom:8px;">Detecting color from image file by moving cursor on it.</p>
+            <div class="input-group">
+                <input type="file"  accept="image/*"name='file' id= "browse" class="form-control form-control-lg" aria-describedby="inputGroupFileAddon04" aria-label="Upload" style="background-color:#f4eee0">
+                <input class="btn btn-outline-secondary" value='SUBMIT' id = "submit" type="submit" id="inputGroupFileAddon04" style="background-color:	#e9e0d4;font-size: large;"></button>
+            </div>
+        </form>
+
+        <div class="container">
+            <div class="row" style="padding-top:30px;">
+                <div class="col col-lg" style="padding-left: 50px; padding-right: 0px;">
+                    {% if status == 'uploaded'%}
+                    <div id = "rim">
+                        <canvas id="frame" class="text-center"></canvas>
+                    </div>
+                </div>
+                <div class="col col-lg" style="padding-left: 0px; padding-right: 50px;">
+                    <div id = "solutions" class="text-center">
+                        <canvas id= "solution_frame"></canvas>
+                        <div id="solution"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if status == "resulted" %}
+    <h1>The value will be here</h1>
+    {% endif %}
+    {% endif %}
+
+    <script type= "text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+    <script type = text/javascript >
+        // Get the javascript to draw the image on a canvas
+        function make_base(){
+            base_image = new Image();
+            // Jinga works here too.
+            var image_url = '{{img_url}}';
+            base_image.src = image_url;
+            base_image.onload = function(){
+                scale_to_fit(this);
+            }
+        }
+        make_base();
+    </script>
+</body>
+
+</html>
